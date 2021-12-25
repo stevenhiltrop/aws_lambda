@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/aws/aws-lambda-go/lamda"
+)
 
 type Request struct {
 	ID    float64 `json:"id"`
@@ -17,4 +21,8 @@ func Handler(request Request) (Response, error) {
 		Message: fmt.Sprintf("Process Request ID %f", request.ID),
 		OK:      true,
 	}, nil
+}
+
+func main() {
+	lamda.Start()
 }
